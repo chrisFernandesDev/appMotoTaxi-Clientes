@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "appMotoTaxi-Clientes",
+    "slug": "appMotoTaxi-Clientes",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "appMotoTaxi-Clientes"
+}
