@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Login from './src/componente/pages/Login';
 import Principal from './src/componente/pages/Principal';
 import { UserContext } from './src/componente/pages/userContext';
+import Mapa from './src/componente/pages/Mapa';
 
 export default function App() {
   const [logado, setLogado] = useState(false);
@@ -27,7 +28,7 @@ export default function App() {
       <UserContext.Provider value={{ usuario, logar, deslogar }}>
       {logado ? <Principal /> : <Login />}
       </UserContext.Provider>
-
+      <Mapa/>
     </NavigationContainer>
   );
 }
