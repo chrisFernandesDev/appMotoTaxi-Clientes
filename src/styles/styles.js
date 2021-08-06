@@ -26,6 +26,9 @@ export const styles = StyleSheet.create({
         fontSize: 30,
         color: 'white',
     },
+    textHistorico:{
+        fontSize: 30,
+    },
     input: {
         fontSize: 16,
         padding: 5,
