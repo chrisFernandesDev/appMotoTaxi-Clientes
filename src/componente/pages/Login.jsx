@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import firebase from '../../../firebase';
 import { Text, View, TextInput, Button, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { useEffect, useContext } from 'react'
-import { UserContext } from './userContext';
+import { UserContext } from './UserContext';
 import { Ionicons } from '@expo/vector-icons'
 
 export default function Login() {
