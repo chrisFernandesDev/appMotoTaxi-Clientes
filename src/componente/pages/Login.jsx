@@ -8,21 +8,41 @@ import { Ionicons } from '@expo/vector-icons'
 export default function Login() {
     const { logar, deslogar } = useContext(UserContext);
 
-    // const [hidePass, setHidePass] = useState(true);
-    // const [input, setInput] = useState('');
-
     const [loading, setLoading] = useState(true);
     const [newUser, setNewUser] = useState(false);
+    const [dados, setDados] = useState({
+        nome: '',
+        email: '',
+        cpf: '',
+        idade: '',
+        endereco: '',
+        telefone: '',
+    })
     const [state, setState] = useState({
-        nome: "",
-        email: "",
         senha: "",
         msg: "",
     });
 
-    const handleInputChange = (name, value) => {
+    const addUser = async () => {
+		await firebase.db
+			.collection('users')
+			.add(dados)
+			.then(() => {
+				alert('Usuário adicionado');
+			})
+			.catch((error) => alert(error));
+	};
+
+    const handleInputChangeState = (name, value) => {
         setState({
             ...state,
+            [name]: value
+        });
+    };
+
+    const handleInputChangeDados = (name, value) => {
+        setDados({
+            ...dados,
             [name]: value
         });
     };
@@ -53,19 +73,25 @@ export default function Login() {
 
     const login = async () => {
         const auth = firebase.auth;
-        const { email, senha } = state;
+        const { email } = dados;
+        const { senha } = state;
         try {
             const resposta = await auth.signInWithEmailAndPassword(email, senha)
-            setState ({... state, msg: "Loguei"})
+            setState({ ...state, msg: "Loguei" })
+            setDados({ ...dados})
         } catch (error) {
             setState({ ...state, msg: "Email ou Senha invalidos" })
+            setDados({ ...dados})
         }
     }
 
 
     const cadastrar = async () => {
         const auth = firebase.auth;
-        const { email, senha } = state;
+        const { email } = dados;
+        console.log(email)
+        const { senha } = state;
+        console.log(senha)
         if (senha.length >= 6) {
             try {
                 const resposta = await auth.createUserWithEmailAndPassword(email, senha);
@@ -79,7 +105,7 @@ export default function Login() {
             setState({ ...state, msg: "Senha deve conter no mínimo 6 caracteres" })
         }
     }
-  
+
     if (loading) {
         return <ActivityIndicator />
     }
@@ -88,37 +114,56 @@ export default function Login() {
         <View>
             <View>
                 <Text>{newUser ? "Novo Usuário" : "Login"}</Text>
-                <TextInput
-                    placeholder="Nome"
-                    defaultValue={state.nome}
-                    onChangeText={(value) => handleInputChange('nome', value)}
 
-                />
-
-                <TextInput
-                    placeholder="Email"
-                    defaultValue={state.email}
-                    onChangeText={(value) => handleInputChange('email', value)}
-                />
-
-                <TextInput
-                    placeholder="Senha"
-                    defaultValue={state.senha}
-                    secureTextEntry={true}
-                    onChangeText={
-                        (value) =>
-                            handleInputChange('senha', value)
-                            // (texto) => setInput(true)
-                    }
-                    // secureTextEntry={hidePass}
-                />
-                {/* <TouchableOpacity onPress={() => setHidePass(!hidePass)}>
-                    <Ionicons name="eye" color="black" size={25} />
-                </TouchableOpacity> */}
+                <Text>{newUser ?
+                <View>
+                    <TextInput
+                        placeholder="Nome"  
+                        onChangeText={(value) => handleInputChangeDados('nome', value)} 
+                    />
+                     <TextInput
+                        placeholder="Email"
+                        onChangeText={(value) => handleInputChangeDados('email', value)}
+                    />
+                    <TextInput
+                        placeholder="Idade"
+                        onChangeText={(value) => handleInputChangeDados('idade', value)}
+                    />
+                    <TextInput
+                        placeholder="Cpf"
+                        onChangeText={(value) => handleInputChangeDados('cpf', value)}
+                    />
+                    <TextInput
+                        placeholder="Endereço"
+                        onChangeText={(value) => handleInputChangeDados('endereco', value)}
+                    />
+                    <TextInput
+                        placeholder="Telefone"
+                        onChangeText={(value) => handleInputChangeDados('telefone', value)}
+                    />
+                    <TextInput
+                        placeholder="Senha"
+                        onChangeText={(value) => handleInputChangeState('senha', value)}
+                    />
+                    </View>
+                    :
+                    <View>
+                    <TextInput
+                        placeholder="Email"
+                        onChangeText={(value) => handleInputChangeDados('email', value)}
+                    />
+                    <TextInput
+                        placeholder="Senha"
+                        onChangeText={(value) => handleInputChangeState('senha', value)}
+                        secureTextEntry={hidePass}
+                    />
+                    </View>
+}
+                    </Text>
 
                 {newUser ?
                     <Button title="Cadastrar"
-                        onPress={cadastrar}
+                        onPress={()=> {cadastrar(); addUser()}}
                     />
                     :
                     <Button title="Login"
