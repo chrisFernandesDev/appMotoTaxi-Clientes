@@ -1,10 +1,10 @@
 //motorista / corporativa
 import React, { useEffect, useState } from 'react';
 import { Button, FlatList, Text, TextInput, View } from 'react-native';
-import firebase from '../../firebase';
+import firebase from '../../../firebase';
 
 
-export default function ListarItemId() {
+export default function ListarItem() {
     const [stateMoto, setStateMoto] = useState([]);
     const [stateUser, setStateUser] = useState([]);
     const [listCorridas, setListCorridas] = useState([]);
