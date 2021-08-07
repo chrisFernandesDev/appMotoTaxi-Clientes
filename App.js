@@ -5,8 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Login from './src/componente/pages/Login';
 import Principal from './src/componente/pages/Principal';
-import { UserContext } from './src/componente/pages/userContext';
-import Mapa from './src/componente/pages/Mapa';
+import { UserContext } from './src/componente/pages/UserContext';
 
 export default function App() {
   const [logado, setLogado] = useState(false);
@@ -25,10 +24,10 @@ export default function App() {
   return (
     <NavigationContainer >
       <StatusBar />
-      <UserContext.Provider value={{ usuario, logar, deslogar }}>
+      {/* <UserContext.Provider value={{ usuario, logar, deslogar }}>
       {logado ? <Principal /> : <Login />}
-      </UserContext.Provider>
-      <Mapa/>
+      </UserContext.Provider> */}
+      <Principal/>
     </NavigationContainer>
   );
 }
