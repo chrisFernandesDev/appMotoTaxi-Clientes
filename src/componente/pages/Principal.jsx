@@ -1,18 +1,25 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
 import 'react-native-gesture-handler';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
-import UserView from './UserView';
+// import UserView from './UserView';
+import Viagens from './Viagens';
+
 
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
-export default function Principal() {
+export default function Principal({navigation}) {
     return (
         <>
-            <UserView />
-            <Stack.Navigator initialRouteName="">
-
-            </Stack.Navigator>
+            {/* <UserView /> */}
+            {/* <Stack.Navigator initialRouteName="Viagens">
+                <Stack.Screen name='Viagens' component={Viagens}/>
+            </Stack.Navigator> */}
+            <Drawer.Navigator initialRouteName='Viagens'>
+                <Drawer.Screen name='Viagens' component={Viagens}/>
+            </Drawer.Navigator>
+            
         </>
     );
 }
