@@ -23,11 +23,10 @@ export default function App() {
 
   return (
     <NavigationContainer >
-      <StatusBar />
+      <StatusBar style="auto" />
       <UserContext.Provider value={{ usuario, logar, deslogar }}>
-      {logado ? <Principal /> : <Login />}
+      {logado && usuario ? <Principal /> : <Login />}
       </UserContext.Provider>
-      {/* <Principal/> */}
     </NavigationContainer>
   );
 }
