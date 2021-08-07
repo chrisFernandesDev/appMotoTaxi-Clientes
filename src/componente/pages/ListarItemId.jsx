@@ -1,7 +1,7 @@
 //Dados da corrida que serão mostrados ao usuário
 import React, { useEffect, useState } from 'react';
 import { Button, FlatList, Text, TextInput, View } from 'react-native';
-import firebase from '../../firebase';
+import firebase from '../../../firebase';
 
 
 export default function ListarItemId(){
@@ -14,7 +14,7 @@ export default function ListarItemId(){
     
 
     
-    const  pegaDados = async () => {
+    const pegaDados = async () => {
         const corridas = firebase.db.collection('corrida');
         const querySnapshot = await corridas.where('motoristaId', '==', 'ColocarUIDaqui');
         const dados = querySnapshot.docs;
@@ -28,8 +28,6 @@ export default function ListarItemId(){
         })    
         setState(listCorridas);
       }
-
-      //console.log(state);
 
       return(
         <FlatList

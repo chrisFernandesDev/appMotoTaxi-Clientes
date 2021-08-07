@@ -4,6 +4,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 import UserView from './UserView';
 import Viagens from './Viagens';
+import ListarItem from './ListarItem';
 
 
 const Stack = createStackNavigator();
@@ -13,6 +14,7 @@ export default function Principal({ navigation }) {
     return (
         <>
             <UserView />
+            <ListarItem />
 
             {/* <Stack.Navigator initialRouteName="Viagens">
                 <Stack.Screen name='Viagens' component={Viagens}/>
