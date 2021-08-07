@@ -42,13 +42,17 @@ export const styles = StyleSheet.create({
         marginTop:10,
         padding:10,
     },
+    divbtn:{
+        alignItems:'center',
+    },
     loginTouch:{
         backgroundColor:'#FFC107',
         borderRadius:20,
         color: 'white',
         height:40,
-        marginTop: 50,
-        marginLeft:55,
+        alignItems:'center',
+        // marginTop: 50,
+        // marginLeft:55,
         width:300,
     },
     loginText1:{

@@ -119,7 +119,7 @@ export default function Login() {
                 {/* <TouchableOpacity onPress={() => setHidePass(!hidePass)}>
                     <Ionicons name="eye" color="black" size={25} />
                 </TouchableOpacity> */}
-
+                <View style={styles.divbtn}>
                 {newUser ?
                     <TouchableOpacity
                         onPress={cadastrar}
@@ -136,7 +136,7 @@ export default function Login() {
                         style={styles.loginText1}
                     >Login</Text>
                     </TouchableOpacity>}
-                    
+                </View>
 
                     <View style={styles.cadastrar}>
                         {newUser ?
