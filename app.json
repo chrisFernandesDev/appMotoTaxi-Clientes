@@ -3,6 +3,12 @@
     "name": "appMotoTaxi-Clientes",
     "slug": "appMotoTaxi-Clientes",
     "version": "1.0.0",
+    "splash": {
+      "image":"./imagens/splash.jpeg",
+      "resizeMode": "cover",
+      "backgroundColor": "#000"
+    },
+    "icon":"./imagens/icon.jpeg",
     "assetBundlePatterns": [
       "**/*"
     ]

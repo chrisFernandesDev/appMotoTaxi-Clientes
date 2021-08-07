@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import firebase from '../../../firebase';
-import { Text, View, TextInput, Button, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { Text, View, TextInput, ActivityIndicator, TouchableOpacity, StyleSheet } from 'react-native';
 import { useEffect, useContext } from 'react'
 import { UserContext } from './UserContext';
 import { Ionicons } from '@expo/vector-icons'
+import { styles } from '../styles/style';
 
 export default function Login() {
     const { logar, deslogar } = useContext(UserContext);
@@ -85,23 +86,26 @@ export default function Login() {
     }
 
     return (
-        <View>
-            <View>
-                <Text>{newUser ? "Novo Usuário" : "Login"}</Text>
-                <TextInput
+        <View style={styles.container}>
+            
+            <Text style={styles.loginText}>{newUser ? "Novo Usuário" : "Login"}</Text>
+            
+            <View style={styles.formView}>
+
+                <TextInput style={styles.loginInput}
                     placeholder="Nome"
                     defaultValue={state.nome}
                     onChangeText={(value) => handleInputChange('nome', value)}
 
                 />
 
-                <TextInput
+                <TextInput style={styles.loginInput}
                     placeholder="Email"
                     defaultValue={state.email}
                     onChangeText={(value) => handleInputChange('email', value)}
                 />
 
-                <TextInput
+                <TextInput style={styles.loginInput}
                     placeholder="Senha"
                     defaultValue={state.senha}
                     secureTextEntry={true}
@@ -117,17 +121,35 @@ export default function Login() {
                 </TouchableOpacity> */}
 
                 {newUser ?
-                    <Button title="Cadastrar"
+                    <TouchableOpacity
                         onPress={cadastrar}
-                    />
+                        style={styles.loginTouch}
+                    ><Text
+                        style={styles.loginText1}
+                    >Cadastrar</Text>
+                    </TouchableOpacity>
                     :
-                    <Button title="Login"
+                    <TouchableOpacity
                         onPress={login}
-                    />}
+                        style={styles.loginTouch}
+                    ><Text
+                        style={styles.loginText1}
+                    >Login</Text>
+                    </TouchableOpacity>}
+                    
 
-                {newUser ? <Text onPress={() => setNewUser(false)}> Login </Text> : <Text onPress={() => setNewUser(true)}>Cadastrar</Text>}
+                    <View style={styles.cadastrar}>
+                        {newUser ?
+                        <Text
+                            onPress={() => setNewUser(false)}
+                        >Login</Text>
+                        :
+                        <Text
+                            onPress={() => setNewUser(true)}
+                        >Cadastrar</Text>}
 
-                <Text >{state.msg}</Text>
+                    <Text >{state.msg}</Text>
+                </View>
 
             </View>
         </View>
