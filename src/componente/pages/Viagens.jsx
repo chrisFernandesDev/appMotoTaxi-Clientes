@@ -22,14 +22,10 @@ export default function Viagens({navigation}){
                     />
                     <TouchableOpacity style={styles.btnservico}
                     ><Text style={styles.opservico}
+                        onPress={() => navigation.navigate('Solicitacao')}
                     >Solicitar</Text></TouchableOpacity>
                 </View>
 
-                <View style={styles.infocardmoto}>
-                    <View style={styles.cardinfomoto}>
-                        <Text>Informação do motociclista:</Text>
-                    </View>
-                </View>
 
                 <View style={styles.containercard}>
                     <View style={styles.cardstatus}>
@@ -40,6 +36,11 @@ export default function Viagens({navigation}){
                     </View>
                 </View>
                 
+                <View style={styles.infocardmoto}>
+                    <View style={styles.cardinfomoto}>
+                        <Text>Informação do motociclista:</Text>
+                    </View>
+                </View>
             </View>
         </View>
     )
