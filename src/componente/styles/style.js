@@ -111,7 +111,6 @@ export const styles = StyleSheet.create({
         padding: 4,
            
     },
-
     perfil3:{
         flexDirection:'row',
         fontSize:20,
@@ -119,10 +118,8 @@ export const styles = StyleSheet.create({
         textAlign:'center',
         padding: 4,
     },
-
-    
     perfilTouch:{
-        backgroundColor:'yellow',
+        backgroundColor:'#FFC107',
         borderRadius:20,
         height:200,
         marginTop: 50,
@@ -189,19 +186,23 @@ export const styles = StyleSheet.create({
         padding: 4,
     },
 
-    
+    perfilbtn:{
+        justifyContent:'center',
+        alignItems:'center',
+        width:'100%',
+    },
     perfilTouch:{
-        backgroundColor:'yellow',
+        backgroundColor:'#FFC107',
         borderRadius:20,
         color: 'white',
         height:30,
-        marginTop: 50,
-        marginLeft: 100,
+        alignItems:'center',
+        justifyContent:'center',
         width:200,
     },
 
     perfilText:{
-        fontSize:18,
+        fontSize:20,
         marginTop:5,
         textAlign:'center',
 
@@ -310,6 +311,7 @@ export const styles = StyleSheet.create({
         width:'100%',
         flexDirection:'row',
         justifyContent:'space-around',
+        marginBottom:20,
     },
     cardstatus:{
         width:'49%',
@@ -322,5 +324,10 @@ export const styles = StyleSheet.create({
     textstatus:{
         fontSize:20,
         fontWeight:'bold',
+    },
+    image:{
+        width:'100%',
+        height:350,
+        marginBottom:10,
     },
 });
