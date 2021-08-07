@@ -3,22 +3,23 @@ import 'react-native-gesture-handler';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 import UserView from './UserView';
-import Servicos from './Servicos';
+import Viagens from './Viagens';
 
 
-const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
-export default function Principal() {
+export default function Principal({navigation}) {
     return (
         <>
-            <UserView />
-            <Drawer.Navigator initialRouteName="">
-                <Drawer.Screen/>
+            {/* <UserView /> */}
+            {/* <Stack.Navigator initialRouteName="Viagens">
+                <Stack.Screen name='Viagens' component={Viagens}/>
+            </Stack.Navigator> */}
+            <Drawer.Navigator initialRouteName='Viagens'>
+                <Drawer.Screen name='Viagens' component={Viagens}/>
             </Drawer.Navigator>
-            <Stack.Navigator>
-                <Servicos/>
-            </Stack.Navigator>
+            
         </>
     );
 }

@@ -1,6 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
-
+import { Text, View,  Button } from 'react-native';
 import { UserContext } from './UserContext';
 import firebase from '../../../firebase';
 import { useContext } from 'react';

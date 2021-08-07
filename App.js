@@ -7,6 +7,7 @@ import Login from './src/componente/pages/Login';
 import Principal from './src/componente/pages/Principal';
 import { UserContext } from './src/componente/pages/UserContext';
 import Servicos from './src/componente/pages/Servicos';
+import Viagens from './src/componente/pages/Viagens';
 
 
 const Drawer = createDrawerNavigator();
@@ -27,10 +28,10 @@ export default function App() {
   return (
     <NavigationContainer >
       <StatusBar />
-        <UserContext.Provider value={{ usuario, logar, deslogar }}>
+        {/* <UserContext.Provider value={{ usuario, logar, deslogar }}>
         {logado ? <Principal /> : <Login />}
-        </UserContext.Provider>
-        {/* <Servicos/> */}
+        </UserContext.Provider> */}
+        <Principal/>
     </NavigationContainer>
   );
 }
