@@ -16,9 +16,14 @@ export default function Login() {
     const [newUser, setNewUser] = useState(false);
     const [state, setState] = useState({
         nome: "",
+        endereco:"",
+        cpf:"",
+        idade:"",
+        telefone:"",
         email: "",
         senha: "",
         msg: "",
+
     });
 
     const handleInputChange = (name, value) => {
@@ -92,12 +97,40 @@ export default function Login() {
             
             <View style={styles.formView}>
 
+                {newUser ? 
                 <TextInput style={styles.loginInput}
-                    placeholder="Nome"
+                    placeholder="Nome Completo"
                     defaultValue={state.nome}
                     onChangeText={(value) => handleInputChange('nome', value)}
+                /> : <></>}
 
-                />
+                {newUser ? 
+                <TextInput style={styles.loginInput}
+                    placeholder="CPF"
+                    defaultValue={state.nome}
+                    onChangeText={(value) => handleInputChange('nome', value)}
+                /> : <></>}
+
+                {newUser ? 
+                <TextInput style={styles.loginInput}
+                    placeholder="Idade"
+                    defaultValue={state.nome}
+                    onChangeText={(value) => handleInputChange('nome', value)}
+                /> : <></>}
+
+                {newUser ? 
+                <TextInput style={styles.loginInput}
+                    placeholder="Telefone"
+                    defaultValue={state.nome}
+                    onChangeText={(value) => handleInputChange('nome', value)}
+                /> : <></>}
+
+                {newUser ? 
+                <TextInput style={styles.loginInput}
+                    placeholder="Endereço"
+                    defaultValue={state.nome}
+                    onChangeText={(value) => handleInputChange('nome', value)}
+                /> : <></>}
 
                 <TextInput style={styles.loginInput}
                     placeholder="Email"
