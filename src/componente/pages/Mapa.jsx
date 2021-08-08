@@ -14,22 +14,22 @@ export default function Mapa(){
     const [destination, setDestination]=useState(null);
     const [fetchDetails, setFetchDetails]=useState(true);
 
-    useEffect(() => {
-        (async function(){
-            const { status, permissions } = await Permissions.askAsync(Permissions.LOCATION);
-            if (status === 'granted') {
-                let location = await Location.getCurrentPositionAsync({enableHighAccuracy: true});
-                setOrigin({
-                    latitude: location.coords.latitude,
-                    longitude: location.coords.longitude,
-                    latitudeDelta:0.000922,
-                    longitudeDelta: 0.000421,
-                });
-            } else {
-                throw new Error('Location permission not granted');
-            }
-        })
-    })
+    // useEffect(() => {
+    //     (async function(){
+    //         const { status, permissions } = await Permissions.askAsync(Permissions.LOCATION);
+    //         if (status === 'granted') {
+    //             let location = await Location.getCurrentPositionAsync({enableHighAccuracy: true});
+    //             setOrigin({
+    //                 latitude: location.coords.latitude,
+    //                 longitude: location.coords.longitude,
+    //                 latitudeDelta:0.000922,
+    //                 longitudeDelta: 0.000421,
+    //             });
+    //         } else {
+    //             throw new Error('Location permission not granted');
+    //         }
+    //     })
+    // })
 
 
     return(
@@ -62,7 +62,7 @@ export default function Mapa(){
                     language: 'pt-br',
                 }}
                 enablePoweredByContainer={false}
-                fetchDetail={true}
+                fetchDetails={true}
                 styles={{listView:{height:100}}}
             />
 
