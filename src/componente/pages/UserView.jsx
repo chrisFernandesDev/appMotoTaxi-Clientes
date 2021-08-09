@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { TouchableOpacity, View, Text} from "react-native";
 import firebase from "../../../firebase";
-import { UserContext } from "./UserContext";
+import { UserContext } from "./userContext";
 import { styles } from "../styles/style";
 
 export default function UserView() {
