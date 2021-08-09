@@ -12,7 +12,8 @@ export default function Viagens({navigation}) {
     const [corrida, setCorrida] = useState({
         origem: '',
         destino: '',
-        email: usuario.email
+        email: usuario.email,
+        pagamentos: '',
     })
 
     // console.log(usuario)
