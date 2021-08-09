@@ -39,7 +39,10 @@
     "react-native-tab-view": "^3.1.1",
     "react-native-unimodules": "~0.14.5",
     "react-native-vector-icons": "^8.1.0",
-    "react-native-web": "~0.13.12"
+    "react-native-web": "~0.13.12",
+    "@react-native-masked-view/masked-view": "0.2.4",
+    "react-native-maps-directions": "^1.8.0"
+ 
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"

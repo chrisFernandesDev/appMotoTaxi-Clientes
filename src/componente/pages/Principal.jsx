@@ -7,6 +7,7 @@ import Viagens from './Viagens';
 import Historico from './Historico';
 import Perfil from './Perfil';
 import ListarItem from './ListarItem'
+import Mapa from './Mapa';
 
 
 const Stack = createStackNavigator();
@@ -19,6 +20,7 @@ export default function Principal() {
                 <Drawer.Screen name='Historico' component={Historico}/>
                 <Drawer.Screen name='Perfil' component={Perfil}/>
                 <Drawer.Screen name='Logout' component={UserView}/>
+                <Drawer.Screen name='Logout' component={Mapa}/>
             </Drawer.Navigator>
     );
 }
