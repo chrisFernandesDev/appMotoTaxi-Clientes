@@ -56,12 +56,12 @@ export const styles = StyleSheet.create({
         justifyContent:'center',
     },
     map:{
-        height: '40%',
+        height: '30%',
         backgroundColor:'black'
     },
     search:{
         height: '60%',
-        backgroundColor:'gray',
+        backgroundColor:'#c9c9c9',
     },
 
     
