@@ -68,6 +68,10 @@ export const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
     },
+    formView1:{
+        alignItems:'center',
+        justifyContent:'center',
+    },
     perfil1:{
         borderBottomColor: "red",
         borderBottomWidth: StyleSheet.hairlineWidth,
@@ -264,7 +268,7 @@ export const styles = StyleSheet.create({
     },
     cardservico:{
         width:'100%',
-        height:200,
+        height:250,
         alignItems:'center',
         justifyContent:'space-around',
     },
@@ -287,7 +291,6 @@ export const styles = StyleSheet.create({
     infocardmoto:{
         width:'100%',
         height:70,
-        borderWidth:1,
         alignItems:'center',
         justifyContent:'center',
     },
@@ -310,7 +313,7 @@ export const styles = StyleSheet.create({
     },
     cardstatus:{
         width:'49%',
-        height:100,
+        height:80,
         borderWidth:1,
         borderColor:'green',
         borderRadius:5,

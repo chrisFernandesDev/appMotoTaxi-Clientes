@@ -52,8 +52,6 @@ export default function Historico() {
     return (
 
         <View style={styles.containerHist}>
-            {/* <ImageBackground source={require('../../../image/foto2.png')}
-                resizeMode='cover' style={styles.bckHist}> */}
                 <View style={styles.containerTitulo}>
                     <Text style={styles.cardTitulo}>Minhas Corridas</Text>
                 </View>
@@ -73,8 +71,6 @@ export default function Historico() {
 
                     )}
                 />
-
-            {/* </ImageBackground> */}
         </View>
     )
 }
