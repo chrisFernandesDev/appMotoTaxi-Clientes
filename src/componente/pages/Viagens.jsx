@@ -1,10 +1,42 @@
-import React, { useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {View, Text, TouchableOpacity, TextInput, Image} from 'react-native';
 import { styles } from '../styles/style';
+import { UserContext } from './UserContext';
+import firebase from '../../../firebase';
+// import Mapa from './Mapa';
+export default function Viagens({navigation}) {
+    const {usuario} = useContext(UserContext)
+
+	const [ok, setOk] = useState(false)
+	const [state, setState] = useState({
+		origem:'',
+        destino:''
+	})
+
+    console.log(usuario.uid)
 
 
-export default function Viagens({navigation}){
-        
+
+	const handleInputChange = (name, value) => {
+        setState({
+            ...state, [name]: value
+        })
+    }
+
+	const addCriarCorridas = async (param)=>{
+		await firebase.db.collection("corrida").add({state, keyPassageiro: param.uid}).then(
+			() =>{
+				alert("Corrida Criada")
+				setOk(true)
+			}
+		).catch(
+			error => alert(error)
+		)
+	}
+
+	// Pagina a ser definida para retorno após 
+	// a corrida ter sido criada com sucesso
+	
     return(
         <View style={styles.cotainer}>
             
@@ -13,13 +45,16 @@ export default function Viagens({navigation}){
                 <View style={styles.cardservico}>
                     <TextInput style={styles.inputservico}
                         placeholder='Pra onde vamos?'
+                        onChangeText={(value)=> handleInputChange('destino',value)}
                     />
                     <TextInput style={styles.inputservico}
                         placeholder='Onde estou?'
+                        onChangeText={(value)=> handleInputChange('origem',value)}
                     />
                     <TouchableOpacity style={styles.btnservico}
                     ><Text style={styles.opservico}
-                        onPress={() => navigation.navigate('Solicitacao')}
+                        // onPress={() => navigation.navigate('Solicitacao')}
+                        onPress={()=> addCriarCorridas(usuario)}
                     >Solicitar</Text></TouchableOpacity>
                 </View>
 
