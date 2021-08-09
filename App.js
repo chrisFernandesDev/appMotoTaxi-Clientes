@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'react-native';
 import 'react-native-gesture-handler';
-import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Login from './src/componente/pages/Login';
 import Principal from './src/componente/pages/Principal';
@@ -27,6 +26,7 @@ export default function App() {
       <UserContext.Provider value={{ usuario, logar, deslogar }}>
       {logado && usuario ? <Principal /> : <Login />}
       </UserContext.Provider>
+      {/* <Principal/> */}
     </NavigationContainer>
   );
 }
