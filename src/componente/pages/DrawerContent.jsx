@@ -21,7 +21,7 @@ export function DrawerContent(props) {
 								size={50}
 							/>
 							<View style={{ marginLeft: 15, flexDirection: 'column' }}>
-								<Title style={styles.title}>Cooperativa dos guri</Title>
+								<Title style={styles.title}>Seja Bem vindo!</Title>
 								<Caption style={styles.caption}>@j_doe</Caption>
 							</View>
 						</View>
@@ -30,9 +30,9 @@ export function DrawerContent(props) {
 					<Drawer.Section style={styles.drawerSection}>
 						<DrawerItem
 							icon={({ color, size }) => <Icon name="home-outline" color={color} size={size} />}
-							label="Viagens"
+							label="Home"
 							onPress={() => {
-								props.navigation.navigate('Viagens');
+								props.navigation.navigate('Home');
 							}}
 						/>
 						<DrawerItem
