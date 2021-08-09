@@ -1,4 +1,4 @@
-           import { StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     container:{
@@ -41,6 +41,7 @@ export const styles = StyleSheet.create({
         margin:18,
         marginTop:10,
         padding:10,
+        width:'80%'
     },
     divbtn:{
         alignItems:'center',
@@ -51,20 +52,21 @@ export const styles = StyleSheet.create({
         color: 'white',
         height:40,
         alignItems:'center',
-        // marginTop: 50,
-        // marginLeft:55,
         width:300,
     },
     loginText1:{
         fontSize:30,
         marginBottom: 5,
         textAlign:'center',
-
     },
     cadastrar:{
         alignItems:'center',
         marginTop:20,
         width:'100%'
+    },
+    formView:{
+        alignItems:'center',
+        justifyContent:'center',
     },
     perfil1:{
         borderBottomColor: "red",
@@ -117,14 +119,6 @@ export const styles = StyleSheet.create({
         marginTop:10,
         textAlign:'center',
         padding: 4,
-    },
-    perfilTouch:{
-        backgroundColor:'#FFC107',
-        borderRadius:20,
-        height:200,
-        marginTop: 50,
-        marginLeft: 100,
-        width:220,
     },
 
     perfilText:{
@@ -190,7 +184,9 @@ export const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
         width:'100%',
+        marginVertical:20,
     },
+    
     perfilTouch:{
         backgroundColor:'#FFC107',
         borderRadius:20,
@@ -198,14 +194,13 @@ export const styles = StyleSheet.create({
         height:30,
         alignItems:'center',
         justifyContent:'center',
-        width:200,
+        width:210,
     },
 
     perfilText:{
         fontSize:20,
         marginTop:5,
         textAlign:'center',
-
     },
 
     confirmarCorridaImg3:{
@@ -330,4 +325,39 @@ export const styles = StyleSheet.create({
         height:350,
         marginBottom:10,
     },
+
+    //Historico
+    containerHist:{
+        flex: 1,
+        backgroundColor:'#C9C9C9'
+    },
+    bckHist:{
+        flex: 1,
+        justifyContent: "center",
+    },
+    containerTitulo:{
+        backgroundColor:'white',
+        height: 55
+    },
+    cardTitulo:{
+        fontSize:36,
+        padding:5,
+    },
+    textconcl:{
+        margin:10
+    },
+    containerCard:{
+        alignItems:'center'
+    },
+    cardHist:{
+        width:'95%',
+        height:100,
+        backgroundColor:'white',
+        borderRadius:10,
+        marginVertical:10,
+        padding:5,
+    },
+    textCardHist:{
+        fontSize:16,
+    }
 });

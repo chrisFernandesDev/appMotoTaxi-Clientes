@@ -1,13 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import firebase from '../../../firebase';
-import { Text, View, TextInput, ActivityIndicator, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, View, TextInput, ActivityIndicator, TouchableOpacity, Button } from 'react-native';
 import { useEffect, useContext } from 'react'
 import { UserContext } from './UserContext';
 import { Ionicons } from '@expo/vector-icons'
 import { styles } from '../styles/style';
+import { TextInputMask } from 'react-native-masked-text'
 
 export default function Login() {
     const { logar, deslogar } = useContext(UserContext);
+    const cpfRef = useRef(null);
+    const cellRef = useRef(null);
+
+    function showCpf() {
+        const unmaskCpf = cpfRef?.current.getRawValue();
+        const cpfIsValid = cpfRef?.current.isValid();
+        alert(cpfIsValid)
+    }
+
+    function showCell() {
+        const unmask = cellRef?.current.getRawValue();
+        alert(unmask)
+    }
 
     const [loading, setLoading] = useState(true);
     const [newUser, setNewUser] = useState(false);
@@ -113,95 +127,113 @@ export default function Login() {
     return (
         <View style={styles.container}>
             <View>
-                <Text style={styles.loginText}>{newUser ? "Novo Usuário" : "Login"}</Text>
+                <Text style={styles.loginText}>{newUser ? "Novo Usuário" : ""}</Text>
 
-                <View>
-                    <Text>{newUser ?
-                        <View style={styles.formView}>
-                            <TextInput
-                                style={styles.loginInput}
-                                placeholder="Nome"
-                                onChangeText={(value) => handleInputChangeDados('nome', value)}
-                                defaultValue={null}
-                            />
-                            <TextInput
-                                style={styles.loginInput}
-                                placeholder="Email"
-                                onChangeText={(value) => handleInputChangeDados('email', value)}
-                                defaultValue={null}
-                            />
-                            <TextInput
-                                style={styles.loginInput}
-                                placeholder="Idade"
-                                onChangeText={(value) => handleInputChangeDados('idade', value)}
-                                defaultValue={null}
-                            />
-                            <TextInput
-                                style={styles.loginInput}
-                                placeholder="Cpf"
-                                onChangeText={(value) => handleInputChangeDados('cpf', value)}
-                                defaultValue={null}
-                            />
-                            <TextInput
-                                style={styles.loginInput}
-                                placeholder="Endereço"
-                                onChangeText={(value) => handleInputChangeDados('endereco', value)}
-                                defaultValue={null}
-                            />
-                            <TextInput
-                                style={styles.loginInput}
-                                placeholder="Telefone"
-                                onChangeText={(value) => handleInputChangeDados('telefone', value)}
-                                defaultValue={null}
-                            />
-                            <TextInput
-                                style={styles.loginInput}
-                                placeholder="Senha"
-                                onChangeText={(value) => handleInputChangeState('senha', value)}
-                                defaultValue={null}
-                            />
-                        </View>
+
+                {newUser ? <View style={styles.formView}>
+                    <TextInput
+                        style={styles.loginInput}
+                        placeholder="Nome"
+                        onChangeText={(value) => handleInputChangeDados('nome', value)}
+                        defaultValue={null}
+                    />
+
+                    <TextInput
+                        style={styles.loginInput}
+                        placeholder="Email"
+                        onChangeText={(value) => handleInputChangeDados('email', value)}
+                        defaultValue={null}
+                    />
+                    <TextInput
+                        style={styles.loginInput}
+                        placeholder="Idade"
+                        onChangeText={(value) => handleInputChangeDados('idade', value)}
+                        defaultValue={null}
+                    />
+                    <TextInputMask
+                        style={styles.loginInput}
+                        placeholder={'CPF'}
+                        type={'cpf'}
+                        value={dados.cpf}
+                        onChangeText={(value) => handleInputChangeDados('cpf', value)}
+                        defaultValue={null}
+                        ref={cpfRef}
+                    />
+
+                    {/* <Button title='show'
+                    onPress={showCpf}/> */}
+
+                    <TextInput
+                        style={styles.loginInput}
+                        placeholder="Endereço"
+                        onChangeText={(value) => handleInputChangeDados('endereco', value)}
+                        defaultValue={null}
+                    />
+                    <TextInputMask
+                        style={styles.loginInput}
+                        placeholder={'Telefone'}
+                        type={'cel-phone'}
+                        options={{
+                            maskType: 'BRL',
+                            withDDD: true,
+                            dddMask: '(99) ',
+                        }}
+                        value={dados.telefone}
+                        onChangeText={(value) => handleInputChangeDados('telefone', value)}
+                        defaultValue={null}
+                        ref={cellRef}
+                    />
+
+                    {/* <Button title='show'
+                    onPress={showCell}/> */}
+
+                    <TextInput
+                        style={styles.loginInput}
+                        placeholder="Senha"
+                        onChangeText={(value) => handleInputChangeState('senha', value)}
+                        defaultValue={null}
+                    />
+                </View>
+                    :
+                    <View style={styles.formView}>
+                        <TextInput
+                            style={styles.loginInput}
+                            placeholder="Email"
+                            onChangeText={(value) => handleInputChangeDados('email', value)}
+                            defaultValue={null}
+                        />
+                        <TextInput
+                            style={styles.loginInput}
+                            placeholder="Senha"
+                            onChangeText={(value) => handleInputChangeState('senha', value)}
+                            defaultValue={null}
+                        // secureTextEntry={true}
+                        />
+                    </View>
+                }
+
+                <View style={styles.divbtn}>
+                    {newUser ?
+                        <TouchableOpacity
+                            onPress={cadastrar}
+                            style={styles.loginTouch}
+                        ><Text
+                            style={styles.loginText1}
+                        >Cadastrar</Text>
+                        </TouchableOpacity>
                         :
-                        <View style={styles.formView}>
-                            <TextInput
-                                style={styles.loginInput}
-                                placeholder="Email"
-                                onChangeText={(value) => handleInputChangeDados('email', value)}
-                                defaultValue={null}
-                            />
-                            <TextInput
-                                style={styles.loginInput}
-                                placeholder="Senha"
-                                onChangeText={(value) => handleInputChangeState('senha', value)}
-                                defaultValue={null}
-                            // secureTextEntry={true}
-                            />
-                        </View>
+                        <TouchableOpacity
+                            onPress={login}
+                            style={styles.loginTouch}
+                        ><Text
+                            style={styles.loginText1}
+                        >Login</Text>
+                        </TouchableOpacity>
                     }
-                    </Text>
+                </View>
 
-                    <View style={styles.divbtn}>
-                        {newUser ?
-                            <TouchableOpacity
-                                onPress={cadastrar}
-                                style={styles.loginTouch}
-                            ><Text
-                                style={styles.loginText1}
-                            >Cadastrar</Text>
-                            </TouchableOpacity>
-                            :
-                            <TouchableOpacity
-                                onPress={login}
-                                style={styles.loginTouch}
-                            ><Text
-                                style={styles.loginText1}
-                            >Login</Text>
-                            </TouchableOpacity>}
-                    </View>
-
-                    <View style={styles.cadastrar}>{newUser ? <Text onPress={() => setNewUser(false)}>Login</Text> : <Text onPress={() => setNewUser(true)} >Cadastrar</Text>}
-                        <Text >{state.msg}</Text>
-                    </View>
+                <View style={styles.cadastrar}>{newUser ? <Text onPress={() => setNewUser(false)}>Login</Text> : <Text onPress={() => setNewUser(true)} >Cadastrar</Text>}
+                    <Text >{state.msg}</Text>
                 </View>
             </View>
         </View>

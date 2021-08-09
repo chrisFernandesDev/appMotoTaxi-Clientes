@@ -1,10 +1,11 @@
 //motorista / corporativa
 import React, { useEffect, useState } from 'react';
-import { Button, FlatList, Text, TextInput, View } from 'react-native';
+import { ActivityIndicator, Button, FlatList, Text, TextInput, View } from 'react-native';
 import firebase from '../../../firebase';
 
 
 export default function ListarItem() {
+    const [loading, setLoading] = useState(true)
     const [stateMoto, setStateMoto] = useState([]);
     const [stateUser, setStateUser] = useState([]);
     const [listCorridas, setListCorridas] = useState([]);
@@ -28,9 +29,13 @@ export default function ListarItem() {
                 })
             })
         setStateMoto(listCorridas);
+        setLoading(false);
+    }
+    if(loading){
+        <ActivityIndicator/>
     }
 
-    ///// PegaDadosUsuarios > tributos que irão para o usuario
+    ///// PegaDadosUsuarios > atributos que irão para o usuario
     const pegaDadosUsers = async () => {
         const users = firebase.db.collection('motorista');
         const querySnapshot = await users.get();
@@ -62,6 +67,4 @@ export default function ListarItem() {
             />
         </View>
     )
-
-
 }
