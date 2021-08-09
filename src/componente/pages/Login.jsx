@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import firebase from '../../../firebase';
-import { Text, View, TextInput, ActivityIndicator, TouchableOpacity, Button } from 'react-native';
+import { Text, View, TextInput, ActivityIndicator, TouchableOpacity, Button, ScrollView } from 'react-native';
 import { useEffect, useContext } from 'react'
 import { UserContext } from './UserContext';
 import { Ionicons } from '@expo/vector-icons'
@@ -140,7 +140,7 @@ export default function Login() {
 
     return (
         <View style={styles.container}>
-            <View>
+            <ScrollView>
                 <Text style={styles.loginText}>{newUser ? "Novo Usuário" : ""}</Text>
 
 
@@ -209,7 +209,7 @@ export default function Login() {
                     />
                 </View>
                     :
-                    <View style={styles.formView}>
+                    <View style={styles.formView1}>
                         <TextInput
                             style={styles.loginInput}
                             placeholder="Email"
@@ -249,7 +249,7 @@ export default function Login() {
                 <View style={styles.cadastrar}>{newUser ? <Text onPress={() => setNewUser(false)}>Login</Text> : <Text onPress={() => setNewUser(true)} >Cadastrar</Text>}
                     <Text >{state.msg}</Text>
                 </View>
-            </View>
+            </ScrollView>
         </View>
     )
 }
