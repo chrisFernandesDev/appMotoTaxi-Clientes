@@ -1,12 +1,12 @@
 import { StyleSheet } from "react-native";
 
-
 export const styles = StyleSheet.create({
     container:{
         flex:1,
         padding:20,
         margin:10,
     },
+
     loginView: {
         width: '100%',
         flex: 1,
@@ -64,7 +64,6 @@ export const styles = StyleSheet.create({
         backgroundColor:'#c9c9c9',
     },
 
-    
     distance:{
         flex:1,
         justifyContent: 'center',

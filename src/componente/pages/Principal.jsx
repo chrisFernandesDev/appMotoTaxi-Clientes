@@ -18,7 +18,6 @@ export default function Principal() {
             <Drawer.Screen name='Home' component={Mapa} />
             <Drawer.Screen name='Historico' component={Historico} />
             <Drawer.Screen name='Perfil' component={Perfil} />
-            {/* <Drawer.Screen name='Corrida' component={Mapa} /> */}
             <Drawer.Screen name='Logout' component={UserView} />
         </Drawer.Navigator>
     );
