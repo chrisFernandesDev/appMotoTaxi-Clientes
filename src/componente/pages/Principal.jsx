@@ -8,13 +8,16 @@ import Historico from './Historico';
 import Perfil from './Perfil';
 import ListarItem from './ListarItem'
 import Mapa from './Mapa';
+import { DrawerContent } from './DrawerContent';
+
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 export default function Principal() {
     return (
-        <Drawer.Navigator initialRouteName='Home'>
+        <Drawer.Navigator drawerContent={(props) => <DrawerContent {...props} />}
+        initialRouteName="Mapa">
             <Drawer.Screen name='Home' component={Mapa} />
             <Drawer.Screen name='Historico' component={Historico} />
             <Drawer.Screen name='Perfil' component={Perfil} />
