@@ -118,6 +118,20 @@ export default function Login() {
         } else {
             setState({ ...state, msg: "Senha deve conter no mínimo 6 caracteres" })
         }
+
+        setState({
+            senha: "",
+            msg: "",
+        })
+
+        setDados({
+            nome: '',
+            email: '',
+            cpf: '',
+            idade: '',
+            endereco: '',
+            telefone: '',
+        })
     }
 
     if (loading) {
@@ -135,20 +149,20 @@ export default function Login() {
                         style={styles.loginInput}
                         placeholder="Nome"
                         onChangeText={(value) => handleInputChangeDados('nome', value)}
-                        defaultValue={null}
+                        value={dados.nome}
                     />
 
                     <TextInput
                         style={styles.loginInput}
                         placeholder="Email"
                         onChangeText={(value) => handleInputChangeDados('email', value)}
-                        defaultValue={null}
+                        value={dados.email}
                     />
                     <TextInput
                         style={styles.loginInput}
                         placeholder="Idade"
                         onChangeText={(value) => handleInputChangeDados('idade', value)}
-                        defaultValue={null}
+                        value={dados.idade}
                     />
                     <TextInputMask
                         style={styles.loginInput}
@@ -156,7 +170,7 @@ export default function Login() {
                         type={'cpf'}
                         value={dados.cpf}
                         onChangeText={(value) => handleInputChangeDados('cpf', value)}
-                        defaultValue={null}
+                        defaultValue={dados.cpf}
                         ref={cpfRef}
                     />
 
@@ -167,7 +181,7 @@ export default function Login() {
                         style={styles.loginInput}
                         placeholder="Endereço"
                         onChangeText={(value) => handleInputChangeDados('endereco', value)}
-                        defaultValue={null}
+                        value={dados.endereco}
                     />
                     <TextInputMask
                         style={styles.loginInput}
@@ -180,7 +194,7 @@ export default function Login() {
                         }}
                         value={dados.telefone}
                         onChangeText={(value) => handleInputChangeDados('telefone', value)}
-                        defaultValue={null}
+                        // defaultValue={null}
                         ref={cellRef}
                     />
 
@@ -191,7 +205,7 @@ export default function Login() {
                         style={styles.loginInput}
                         placeholder="Senha"
                         onChangeText={(value) => handleInputChangeState('senha', value)}
-                        defaultValue={null}
+                        value={state.senha}
                     />
                 </View>
                     :
@@ -200,13 +214,13 @@ export default function Login() {
                             style={styles.loginInput}
                             placeholder="Email"
                             onChangeText={(value) => handleInputChangeDados('email', value)}
-                            defaultValue={null}
+                            value={dados.email}
                         />
                         <TextInput
                             style={styles.loginInput}
                             placeholder="Senha"
                             onChangeText={(value) => handleInputChangeState('senha', value)}
-                            defaultValue={null}
+                            value={state.senha}
                         // secureTextEntry={true}
                         />
                     </View>

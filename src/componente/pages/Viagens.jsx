@@ -8,23 +8,24 @@ export default function Viagens({navigation}) {
     const {usuario} = useContext(UserContext)
 
 	const [ok, setOk] = useState(false)
-	const [state, setState] = useState({
-		origem:'',
-        destino:''
-	})
+	
+    const [corrida, setCorrida] = useState({
+        origem: '',
+        destino: '',
+        email: usuario.email
+    })
 
-    console.log(usuario.uid)
-
-
+    // console.log(usuario)
 
 	const handleInputChange = (name, value) => {
-        setState({
-            ...state, [name]: value
+        setCorrida({
+            ...corrida, [name]: value
         })
     }
 
-	const addCriarCorridas = async (param)=>{
-		await firebase.db.collection("corrida").add({state, keyPassageiro: param.uid}).then(
+    const addCriarCorridas = async (param, corrida)=>{
+		await firebase.db.collection("corrida").add({destino: corrida.destino, origem: corrida.origem, status: 'Solicitada', email: corrida.email, metodoPag: corrida.pagamentos, keyPassageiro: param.uid})
+        .then(
 			() =>{
 				alert("Corrida Criada")
 				setOk(true)
@@ -51,10 +52,14 @@ export default function Viagens({navigation}) {
                         placeholder='Onde estou?'
                         onChangeText={(value)=> handleInputChange('origem',value)}
                     />
+                    <TextInput style={styles.inputservico}
+                        placeholder='Forma de Pagamento'
+                        onChangeText={(value)=> handleInputChange('pagamentos',value)}
+                    />
                     <TouchableOpacity style={styles.btnservico}
                     ><Text style={styles.opservico}
                         // onPress={() => navigation.navigate('Solicitacao')}
-                        onPress={()=> addCriarCorridas(usuario)}
+                        onPress={()=> addCriarCorridas(usuario, corrida)}
                     >Solicitar</Text></TouchableOpacity>
                 </View>
 

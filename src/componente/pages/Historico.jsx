@@ -11,7 +11,7 @@ export default function Historico() {
     const [listUsers, setListUsers] = useState([]);
 
     useEffect(
-        () => { pegaDadosCorrida(), pegaDadosUsers() }
+        () => { pegaDadosConcluidas() }
     ), []
 
     ///// PegaDadosCorrida > Atributos que irão para o motorista
@@ -35,9 +35,9 @@ export default function Historico() {
     }
 
     ///// PegaDadosUsuarios > atributos que irão para o usuario
-    const pegaDadosUsers = async () => {
-        const users = firebase.db.collection('motorista');
-        const querySnapshot = await users.get();
+    const pegaDadosConcluidas = async () => {
+        const users = firebase.db.collection('corrida');
+        const querySnapshot = await users.where('status', '==', 'Finalizada').get();
         const dados = querySnapshot.docs;
         const listCorridas = [];
         dados.forEach(
@@ -47,7 +47,7 @@ export default function Historico() {
                     key: doc.id
                 })
             })
-        setStateUser(listUsers);
+        setStateUser(listCorridas);
     }
     return (
 
@@ -59,7 +59,7 @@ export default function Historico() {
                 </View>
                 <Text style={styles.textconcl}>Concluidas</Text>
                 <FlatList
-                    data={stateMoto}
+                    data={stateUser}
                     renderItem={({ item }) => (
                         <View style={styles.containerCard}>
                             <View style={styles.cardHist}>
