@@ -9,18 +9,16 @@ import Perfil from './Perfil';
 import ListarItem from './ListarItem'
 import Mapa from './Mapa';
 
-
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 export default function Principal() {
     return (
-            <Drawer.Navigator initialRouteName='Home'>
-                <Drawer.Screen name='Home' component={Viagens}/>
-                <Drawer.Screen name='Historico' component={Historico}/>
-                <Drawer.Screen name='Perfil' component={Perfil}/>
-                <Drawer.Screen name='Logout' component={UserView}/>
-                <Drawer.Screen name='Logout' component={Mapa}/>
-            </Drawer.Navigator>
+        <Drawer.Navigator initialRouteName='Home'>
+            <Drawer.Screen name='Home' component={Mapa} />
+            <Drawer.Screen name='Historico' component={Historico} />
+            <Drawer.Screen name='Perfil' component={Perfil} />
+            <Drawer.Screen name='Logout' component={UserView} />
+        </Drawer.Navigator>
     );
 }

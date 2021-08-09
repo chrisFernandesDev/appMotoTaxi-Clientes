@@ -4,7 +4,7 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import Login from './src/componente/pages/Login';
 import Principal from './src/componente/pages/Principal';
-import { UserContext } from './src/componente/pages/userContext';
+import { UserContext } from './src/componente/pages/UserContext';
 
 export default function App() {
   const [logado, setLogado] = useState(false);

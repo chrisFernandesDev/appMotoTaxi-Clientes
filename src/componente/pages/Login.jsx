@@ -2,10 +2,10 @@ import React, { useState, useRef } from 'react';
 import firebase from '../../../firebase';
 import { Text, View, TextInput, ActivityIndicator, TouchableOpacity, Button } from 'react-native';
 import { useEffect, useContext } from 'react'
-import { UserContext } from './userContext';
+import { UserContext } from './UserContext';
 import { Ionicons } from '@expo/vector-icons'
 import { styles } from '../styles/style';
-import { TextInputMask } from 'react-native-masked-text'
+import { TextInputMask } from 'react-native-masked-text';
 
 export default function Login() {
     const { logar, deslogar } = useContext(UserContext);

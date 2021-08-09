@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import {View, Text, TouchableOpacity, TextInput, Image} from 'react-native';
 import { styles } from '../styles/style';
-import { UserContext } from './userContext';
+import { UserContext } from './UserContext';
 import firebase from '../../../firebase';
 // import Mapa from './Mapa';
 export default function Viagens({navigation}) {
